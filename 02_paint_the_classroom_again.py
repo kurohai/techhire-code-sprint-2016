@@ -5,6 +5,9 @@ import sys
 
 
 test_cases = [
+    ['blue'],
+    ['red'],
+    ['white'],
     ['white', 'blue'],
     ['white', 'white', 'blue'],
     ['white', 'white', 'white', 'blue'],
@@ -14,13 +17,17 @@ test_cases = [
     ['white', 'white', 'white', 'red'],
     ['white', 'white', 'white', 'white', 'red'],
     ['red', 'white', 'blue'],
+    ['red', 'white', 'white', 'blue'],
     ['blue', 'white', 'red'],
+    ['blue', 'white', 'white', 'red'],
 ]
 
 def this_happened_because_i_didnt_consider_starting_value(user_input):
     if user_input[0] == 'blue':
         return 0
     elif user_input[0] == 'red':
+        return 1
+    elif user_input[0] == 'white' and len(user_input) == 1:
         return 1
 
     for k, v in enumerate(user_input):
