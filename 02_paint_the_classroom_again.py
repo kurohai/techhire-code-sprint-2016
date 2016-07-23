@@ -4,10 +4,15 @@ import sys
 
 
 
-test_cases = [
+test_cases_pass = [
     ['blue'],
     ['red'],
     ['white'],
+    ['white', 'white'],
+    ['white', 'blue'],
+    ['white', 'blue', 'white'],
+    ['white', 'red', 'white'],
+    ['white', 'white', 'white'],
     ['white', 'blue'],
     ['white', 'white', 'blue'],
     ['white', 'white', 'white', 'blue'],
@@ -16,10 +21,17 @@ test_cases = [
     ['white', 'white', 'red'],
     ['white', 'white', 'white', 'red'],
     ['white', 'white', 'white', 'white', 'red'],
-    ['red', 'white', 'blue'],
     ['red', 'white', 'white', 'blue'],
-    ['blue', 'white', 'red'],
     ['blue', 'white', 'white', 'red'],
+]
+test_cases_fail = [
+    ['blue', 'blue'],
+    ['red', 'red'],
+    ['red', 'white', 'blue'],
+    ['blue', 'white', 'red'],
+    ['blue', 'white', 'white', 'blue'],
+    ['red', 'white', 'white', 'red'],
+
 ]
 
 def this_happened_because_i_didnt_consider_starting_value(user_input):
@@ -35,14 +47,14 @@ def this_happened_because_i_didnt_consider_starting_value(user_input):
             if k % 2 == 0 and v == 'red':
                 return 1
             elif k % 2 == 0 and v == 'blue':
-                # print 'failing test case'
-                # print k, v
+                print 'failing test case'
+                print k, v
                 return 0
             elif k % 2 != 0 and v == 'blue':
                 return 1
             elif k % 2 != 0 and v == 'red':
                 return 0
-
+    return 1
 
 def fat_finger_user_input_gen(user_input):
     for c in user_input:
@@ -92,7 +104,12 @@ if __name__ == '__main__':
     # n = int(raw_input().strip())
     # c = map(str,raw_input().strip().split(' '))
     # print type(c)
-    for c in test_cases:
-    # card_count = 0
 
-        main(c)
+    for k, v in enumerate(test_cases_pass):
+        print 'must pass', k
+        main(v)
+    n = int(raw_input().strip())
+
+    for k, v in enumerate(test_cases_fail):
+        print 'must fail', k
+        main(v)
