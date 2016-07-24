@@ -20,6 +20,11 @@ def do_the_other_thing(query_set):
         if len(pre) == len(set(pre)):
             return i
 
+def filter_no_match(queryset, prefixlen):
+    holder = list()
+    for q in queryset:
+        # remove any that dont match on prefixlen
+        pass
 
 def main():
     set_count = parse_next_int()
